@@ -20,7 +20,8 @@ class FileBackup:
             return self.logs["read_error"]
 
     def __getmd5__(self):
-        with open(self.file, "rb+") as readable:
+        with open(self.file, "rb") as readable:
+            bytes = readable.read()
             filemd5 = md5()
-            filemd5.update(readable)
+            filemd5.update(bytes)
             return filemd5.hexdigest()

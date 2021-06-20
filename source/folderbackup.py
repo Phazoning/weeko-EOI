@@ -13,7 +13,7 @@ class FolderBackup:
         self.exc = ["." + e for e in exceptions]  #To add the dot which os needs to identify it with a file extension
         self.isver = verbose
         self.logfile = "weeko.log"
-        self.backupfolder = ""
+        self.backupfolder = f"{folder}-backup/"
 
     def __str__(self):
         print(f"{self.folder}, {self.exc}")
@@ -33,8 +33,8 @@ class FolderBackup:
 
         log.basicConfig(filename=self.logfile,
                         filemode="a+",
-                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                        datefmt='%H:&M:%S',
+                        format='%(asctime)s %(name)s %(levelname)s %(message)s',
+                        datefmt='%H:%M:%S',
                         level=log.INFO)
 
         logger = log.getLogger("main")
@@ -74,4 +74,3 @@ class FolderBackup:
             listdir(folder)
         except FileNotFoundError:
             makedirs(folder)
-
