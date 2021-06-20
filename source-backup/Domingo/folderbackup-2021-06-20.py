@@ -7,20 +7,21 @@ import logging as log
 
 class FolderBackup:
 
-    def __init__(self, folder: str, exceptions: list,  verbose: bool, logfile: str):
+    def __init__(self, folder: str, exceptions: list,  verbose: bool):
         """
         Constructor method for the class
 
         :param folder: path to the folder we are going to backup
         :param exceptions: list of file extensions not to be used
         :param verbose: if we want console output or not
-        :param logfile: the file we want to write the logs to
 
         """
         self.folder = folder
         self.exc = [f".{e}" for e in exceptions]  #To add the dot which os needs to identify it with a file extension
         self.isver = verbose
-        self.logfile = logfile
+
+        #File we are writting the logs to
+        self.logfile = "weeko.log"
 
         #Main folder where the backup folders are to be held
         self.backupfolder = f"{folder}-backup/"
